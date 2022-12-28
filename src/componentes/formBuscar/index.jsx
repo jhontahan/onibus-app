@@ -60,8 +60,8 @@ function FormBuscar(){
     
 
     const sentidos = [
-        { name: 'CENTRO', code: 'CENTRO' },
-        { name: 'BAIRRO', code: 'BAIRRO' }
+        'CENTRO',
+        'BAIRRO'
     ];
 
 
@@ -89,7 +89,7 @@ function FormBuscar(){
                 </div>
                 <div>
                     <h5>Sentido</h5>
-                    <Dropdown value={sentido} options={sentidos} onChange={onChangeSent} optionLabel="name" placeholder="Selecione o sentido" />
+                    <Dropdown value={sentido} options={sentidos} onChange={onChangeSent} placeholder="Selecione o sentido" />
                 </div>
                 <div>
                     <Button label="Buscar" aria-label="Buscar" type="submit" onClick={buscar}/>
