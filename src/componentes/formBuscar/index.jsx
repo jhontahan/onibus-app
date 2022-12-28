@@ -3,6 +3,8 @@ import * as S from "./style"
 import { Dropdown } from 'primereact/dropdown';
 import { Button } from 'primereact/button';
 import OnibusService from "../../services/onibusService";
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 
 function FormBuscar(){
 
@@ -98,10 +100,19 @@ function FormBuscar(){
             </form>
 
             {result && (
-                <h1>teste</h1>
+                <div>
+                <div className="card">
+                    <DataTable value={result} responsiveLayout="scroll">
+                        <Column field="local" header="Local"></Column>
+                        <Column field="referencia" header="Referência"></Column>
+                        <Column field="tipo" header="Tipo"></Column>
+                        <Column field="horario" header="Horário"></Column>
+                    </DataTable>
+                </div>
+            </div>
             )
             }
-            
+
         </S.FormStyle>
     )
 }

@@ -6,7 +6,7 @@ class OnibusService extends ApiService{
     }
 
     buscar(filtro){
-        let url = `/findBy`;
+        let url = `/findByLinhaBus`;
 
         return this.getParametros(url, {params: {
             linhaOnibus: filtro.linhaOnibus,
