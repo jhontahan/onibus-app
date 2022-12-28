@@ -111,7 +111,7 @@ function FormBuscar(){
                         <Column field="local" header="Local"></Column>
                         <Column field="referencia" header="Referência"></Column>
                         <Column field="tipo" header="Tipo"></Column>
-                        <Column field={dataFormatada(result.horario)} header="Horário"></Column>
+                        <Column field="horario" header="Horário"></Column>
                     </DataTable>
                 </div>
             </div>
