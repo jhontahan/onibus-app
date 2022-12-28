@@ -10,6 +10,14 @@ function FormBuscar(){
 
     //let onibusOp = [];
     const [onibusOp, setOnibusOp] = useState(null);
+    const [onibus, setOnibus] = useState(null);
+    const [sentido, setSentido] = useState(null);
+    const [result, setResult] = useState(null);
+
+    let filtro = {
+        linhaOnibus: '',
+        sentido: ''
+      };
 
     useEffect(() => {
         buscarOnibus();
@@ -20,6 +28,7 @@ function FormBuscar(){
     await service
         .buscarOnibus()
         .then((response) => {
+            console.log(response);
             setOnibusOp(response.data);
         })
         .catch((error) => {
@@ -27,21 +36,36 @@ function FormBuscar(){
         });
     }
 
-    const filtro = {
-        linhaOnibus: '',
-        sentido: ''
-      };
+    async function findBy() {
+
+        filtro = {
+            linhaOnibus: onibus,
+            sentido: sentido
+          };
+
+
+        await service
+            .buscar(filtro)
+            .then((response) => {
+                console.log(response);
+                setResult(response.data);
+            })
+            .catch((error) => {
+            console.log(error)
+            });
+        }
+
+    
 
     
 
     const sentidos = [
-        { name: 'Ida', code: 'Ida' },
-        { name: 'Volta', code: 'Volta' }
+        { name: 'CENTRO', code: 'CENTRO' },
+        { name: 'BAIRRO', code: 'BAIRRO' }
     ];
 
 
-    const [onibus, setOnibus] = useState(null);
-    const [sentido, setSentido] = useState(null);
+    
     const onChangeOnibus = (e) => {
         setOnibus(e.value);
     }
@@ -52,7 +76,7 @@ function FormBuscar(){
 
     const buscar = (e) => {
         e.preventDefault();
-        alert('aaa');
+        findBy();
     }
 
     return(
@@ -61,7 +85,7 @@ function FormBuscar(){
             <form onSubmit={buscar}>
                 <div>
                     <h5>Ônibus</h5>
-                    <Dropdown value={onibus} options={onibusOp} onChange={onChangeOnibus} optionLabel="name" placeholder="Selecione o Ônibus" />
+                    <Dropdown value={onibus} options={onibusOp} onChange={onChangeOnibus} placeholder="Selecione o Ônibus" />
                 </div>
                 <div>
                     <h5>Sentido</h5>
@@ -70,6 +94,8 @@ function FormBuscar(){
                 <div>
                     <Button label="Buscar" aria-label="Buscar" type="submit" onClick={buscar}/>
                 </div>
+
+
 
             </form>
         </S.FormStyle>
