@@ -33,6 +33,11 @@ import axios from "axios";
       return api.get(requestUrl);
     }
 
+    getParametros(url, parametros) {
+      const requestUrl = `${this.apiUrl}${url}`;
+      return api.get(requestUrl, parametros);
+    }
+
   }
 
 export default ApiService;

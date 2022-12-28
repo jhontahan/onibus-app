@@ -21,8 +21,9 @@ export default function NavbarMenu() {
             <Nav.Item>Ponto Turístico</Nav.Item>
             <NavDropdown title="Ônibus" id="basic-nav-dropdown">
                 <NavDropdown.Item as={"div"}>Cadastro</NavDropdown.Item>
-
-                <NavDropdown.Item as={"div"}>Pesquisa</NavDropdown.Item>
+                <Link to="/onibus/buscar" className="nav-item">
+                  <NavDropdown.Item as={"div"}>Pesquisa</NavDropdown.Item>
+                </Link>
             </NavDropdown>
               
             </Nav>
