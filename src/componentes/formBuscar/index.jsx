@@ -95,9 +95,13 @@ function FormBuscar(){
                     <Button label="Buscar" aria-label="Buscar" type="submit" onClick={buscar}/>
                 </div>
 
-
-
             </form>
+
+            {result && (
+                <h1>teste</h1>
+            )
+            }
+            
         </S.FormStyle>
     )
 }
